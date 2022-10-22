@@ -7,13 +7,14 @@ module.exports = {
     extend: {
       fontFamily: {
         'barlow': 'Barlow Regular',
-        'barlow-cr': 'Barlow Condensed Bold',
-        'barlow-cb': 'Barlow Condensed Regular',
+        'barlow-cb': 'Barlow Condensed Bold',
+        'barlow-cr': 'Barlow Condensed Regular',
         'bellefair': 'Bellefair Regular'
       },
       backgroundImage: {
         'home-desktop': 'url("./assets/home/background-home-desktop.jpg")',
-        logo: 'url("./assets/shared/logo.svg")'
+        'dest-desktop': 'url("./assets/destination/background-destination-desktop.jpg")',
+        logo: 'url("./assets/shared/logo.svg")',
       },
       colors: {
         black: '#0B0D17',

@@ -22,6 +22,34 @@
   src: url('./assets/fonts/Bellefair-Regular.ttf');
 }
 
+.page-background {
+  @apply h-screen w-screen bg-no-repeat bg-cover flex items-end
+}
+
 * {
-  font-family: 'Barlow Regular';
+  @apply font-barlow text-white;
+}
+
+h1 {
+  @apply text-[150px] font-bellefair;
+}
+
+h2 {
+  @apply text-[100px] font-bellefair;
+}
+
+h3 {
+  @apply text-[56px] font-bellefair;
+}
+
+h4 {
+  @apply text-[32px] font-bellefair;
+}
+
+h5 {
+  @apply text-[28px] font-barlow-cr tracking-[.18em];
+}
+
+p {
+  @apply text-[18px]
 }
