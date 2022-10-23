@@ -1,16 +1,25 @@
+import { useState } from "react"
+
 function ExploreButton() {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const circleStyle = 'transition-all rounded-full h-56 w-56 absolute'
+
     return <div 
-        className='rounded-full bg-white h-56 w-56 
-            flex justify-center items-center
-            cursor-pointer
-        '
+        className='rounded-full h-56 w-56 cursor-pointer
+            flex justify-center items-center'
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
     >
-        <h4 className='text-black'>EXPLORE</h4>
-    </div>
+        <h4 className='text-black z-20'>EXPLORE</h4>
+        <div className={`${circleStyle} bg-white z-10`} />
+        <div className={`${circleStyle} bg-white/10 ${isHovered && 'h-96 w-96'}
+        `} />
+    </div> 
 }
 
 export default function Home() {
-    return <div className='bg-home-desktop page-background p-32'>
+    return <div className='bg-home-desktop page-background p-32 items-end'>
         <div className='w-full h-1/2'>
             <h5 className='mb-0'>SO, YOU WANT TO TRAVEL TO</h5>
             <div className='w-full flex justify-between'>

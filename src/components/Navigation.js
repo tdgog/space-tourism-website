@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { intAs2Char } from '../utils/Formatting';
 import NavigationUnderline from './NavigationUnderline';
+import { useLocation } from 'react-router-dom'
 
 function NavigationElement(props) {
     const {
         index, 
-        name = '',
-        route = '/',
-        currentPage = name, 
+        page = {page: 'HOME', route: '/'},
+        currentPage = page, 
         setCurrentPage = () => console.log("Something went wrong...")
     } = props;
     
@@ -20,17 +20,17 @@ function NavigationElement(props) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => {
-            setCurrentPage(name);
-            navigate(route);
+            setCurrentPage(page);
+            navigate(page.route);
         }}
     > 
         <div className='h-full flex flex-row items-center cursor-pointer select-none'>
             <p className='text-xl font-barlow-cb mr-2'>{intAs2Char(index)}</p>
-            <p className='text-xl font-barlow-cr'>{name}</p>
+            <p className='text-xl font-barlow-cr'>{page.name}</p>
         </div>
         <NavigationUnderline
-            currentPage={currentPage}
-            name={name}
+            currentPage={currentPage.route}
+            name={page.route}
             isHovered={isHovered}
         />
     </div>
@@ -48,15 +48,24 @@ export default function Navigation() {
         },
         {
             name: 'CREW', 
-            route: '/'
+            route: '/crew'
         },
         {
             name: 'TECHNOLOGY',
-            route: '/'
+            route: '/tech'
         }
     ];
 
-    const [currentPage, setCurrentPage] = useState(pages[0].name);
+    const [currentPage, setCurrentPage] = useState(pages[0]);
+    const location = useLocation();
+    useEffect(() => {
+        pages.map(page => {
+            if(page.route === location.pathname) {
+                setCurrentPage(page);
+                console.log(currentPage);
+            }
+        });
+    }, []);
 
     return <div className='w-full h-24 absolute flex mt-12 pl-12'>
         <div className='w-1/2 h-full flex items-center p-4'>
@@ -69,8 +78,7 @@ export default function Navigation() {
                 return <NavigationElement
                     key={i}
                     index={i}
-                    name={page.name}
-                    route={page.route}
+                    page={page}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                 />

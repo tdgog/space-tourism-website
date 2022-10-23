@@ -23,7 +23,7 @@
 }
 
 .page-background {
-  @apply h-screen w-screen bg-no-repeat bg-cover flex items-end
+  @apply h-screen w-screen bg-no-repeat bg-cover flex
 }
 
 * {

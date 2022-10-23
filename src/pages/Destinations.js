@@ -44,7 +44,7 @@ function SelectorElement({ data, currentPage, setCurrentPage }) {
         }}
     > 
         <div className='h-full flex flex-row items-center cursor-pointer select-none'>
-            <p className='text-2xl tracking-[.18em] font-barlow-cr'>{data.name.toUpperCase()}</p>
+            <p className={`text-2xl tracking-[.18em] font-barlow-cr ${data !== currentPage && 'text-blue'}`}>{data.name.toUpperCase()}</p>
         </div>
         <NavigationUnderline
             currentPage={currentPage}
@@ -56,7 +56,8 @@ function SelectorElement({ data, currentPage, setCurrentPage }) {
 
 function Selector({ currentPage, setCurrentPage }) {
     return <div className='w-full h-20 flex space-x-10'>
-        {destinations.map(data => <SelectorElement 
+        {destinations.map((data, i) => <SelectorElement 
+            key={i}
             data={data} 
             currentPage={currentPage} 
             setCurrentPage={setCurrentPage}
@@ -67,7 +68,7 @@ function Selector({ currentPage, setCurrentPage }) {
 export default function Destinations() {
     const [currentPage, setCurrentPage] = useState(destinations[0]);
 
-    return <div className='bg-dest-desktop page-background pt-52 pl-52 pb-24 pr-24 flex flex-col'>
+    return <div className='bg-dest-desktop page-background pt-52 pl-52 pb-24 pr-24 flex-col'>
         <PageTitle number={1}>PICK YOUR DESTINATION</PageTitle>
         <div className='w-full h-full flex'>
             <div className='w-3/5 h-full flex items-center justify-center'>
