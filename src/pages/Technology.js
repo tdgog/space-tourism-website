@@ -25,7 +25,7 @@ function Selector({ currentPage, setCurrentPage }) {
             const textStyle = term === currentPage ? 'text-black' : 'text-white';
             return <div 
                 key={i}
-                className={`transition-all rounded-full h-20 aspect-square flex justify-center items-center ${buttonStyle}`}
+                className={`transition-all duration-300 rounded-full h-20 aspect-square flex justify-center items-center ${buttonStyle}`}
                 onClick={() => setCurrentPage(term)}
             >
                 <h4 className={`transition-all ${textStyle}`}>{i + 1}</h4>

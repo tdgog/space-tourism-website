@@ -6,14 +6,15 @@ function ExploreButton() {
     const circleStyle = 'transition-all rounded-full h-56 w-56 absolute'
 
     return <div 
-        className='rounded-full h-56 w-56 cursor-pointer
-            flex justify-center items-center'
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        className='rounded-full h-56 w-56 flex justify-center items-center'
     >
         <h4 className='text-black z-20'>EXPLORE</h4>
-        <div className={`${circleStyle} bg-white z-10`} />
-        <div className={`${circleStyle} bg-white/10 ${isHovered && 'h-96 w-96'}
+        <div 
+            className={`${circleStyle} bg-white z-10 cursor-pointer`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        />
+        <div className={`${circleStyle} duration-300 bg-white/10 ${isHovered && 'h-96 w-96'}
         `} />
     </div> 
 }
