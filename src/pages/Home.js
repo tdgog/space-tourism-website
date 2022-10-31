@@ -8,7 +8,11 @@ function ExploreButton() {
     return <div 
         className='rounded-full h-56 w-56 flex justify-center items-center'
     >
-        <h4 className='text-black z-20'>EXPLORE</h4>
+        <h4 
+            className='text-black z-20 select-none'
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >EXPLORE</h4>
         <div 
             className={`${circleStyle} bg-white z-10 cursor-pointer`}
             onMouseEnter={() => setIsHovered(true)}
